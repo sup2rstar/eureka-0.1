@@ -8,18 +8,126 @@
 </head>
 <body>
 
-    <header class="main-header">
-        <nav>
-            <button class="nav-button log-in">LOG IN</button>
-            <button class="nav-button sign-up">SIGN UP</button>
-        </nav>
-    </header>
+   <header class="main-header">
+    <nav>
+        <button class="nav-button log-in" onclick="goToLoginPage()">LOG IN</button>
+<button class="nav-button sign-up" onclick="goToLoginPage()">SIGN UP</button>
+    </nav>
+</header>
 
     <main class="hero-section">
         <h1>EUREKA</h1>
-        <img src="assets/toby.png" alt="Toby the Turtle mascot, symbolizing steady progress" class="mascot-image">
-        <p>Your journey to discovery starts here.</p>
+        
+        <a href="https://ibb.co/spcJDmdR">
+            <img src="https://i.ibb.co/4wCgDmnt/1000097206.png" 
+                 alt="Toby the Turtle mascot, symbolizing steady progress" 
+                 class="mascot-image" 
+                 border="0" />
+        </a>
+        
+        <p class="tagline">Your journey to discovery starts here!</p>
     </main>
     
 </body>
 </html>
+
+/* --- Eureka Color Palette ---
+   Background: #ADD8E6 (Light Blue)
+   Accent: #008080 (Teal)
+*/
+
+body {
+    background-color: #ADD8E6; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Header and Navigation Styling --- */
+.main-header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-button {
+    background-color: #008080; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #006666; 
+}
+
+/* --- Hero Section (Main Content) Styling --- */
+.hero-section {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 5em;
+    color: #008080; 
+    margin-bottom: 0.1em;
+}
+
+/* FIX FOR IMAGE CIRCLE: This rule uses the .mascot-image class to enforce the size and shape. */
+.mascot-image {
+    /* Set fixed width and height to force a square area */
+    width: 150px;       
+    height: 150px;      
+    
+    /* Makes it a perfect circle */
+    border-radius: 50%; 
+    
+    /* Ensures the image fills the circular area */
+    object-fit: cover; 
+    background-color: #008080; 
+    margin: 20px 0;
+    display: block; 
+}
+
+/* STYLING FOR THE TAGLINE TEXT */
+.tagline {
+    color: #008080; 
+    font-family: 'Times New Roman', serif; 
+    font-size: 1.2em;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+function goToLoginPage() {
+  // Clear the existing homepage content
+  document.querySelector('.hero-section').innerHTML = '';
+  
+  // Display the content you would normally see on the login-signup.html page
+  document.querySelector('.hero-section').innerHTML = `
+    <h1>Welcome!</h1>
+    <p>Please log in or sign up to begin your journey.</p>
+    
+    <form id="auth-form">
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        
+        <button type="submit" class="nav-button" onclick="redirectToAssessment(event)">Continue to Assessment</button>
+    </form>
+  `;
+}
+
